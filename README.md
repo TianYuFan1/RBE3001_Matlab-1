@@ -1,34 +1,8 @@
-# RBE3001 Matlab Template
+# RBE3001 MATLAB Template
 This is template code for talking to the Default firmware
-# 0.0 Install Matlab
 
-Befor begining install Matlab. 
-
-## 0.1 Matlab Install
-* [Matlab Installed using your WPI login](https://www.mathworks.com/academia/tah-portal/worcester-polytechnic-institute-40552010.html)
-  * Sign in with your WPI account
-  * Download the Linux version R2020a 
-  * matlab_R2020a_glnxa64.zip
- ```
- cd Downloads/ #the directory where the matlab_R2020a_glnxa64.zip is
- ls matlab_R2020a_glnxa64.zip # Make sure you see the zip file
- unzip matlab_R2020a_glnxa64.zip -d matlab
- cd matlab
- sudo ./install
- ```
- Sign in with you WPI account again to accuire licences.
- 
-Under products add 
-
-* Image Acquisition Toolbox
-* Image Processing Toolbox
-
-Under Options check the check box
-
-* Make simlinks to MATLAB scripts
-* Install MATLAB
-
-## 0.2 Matlab configuration
+# 0.0 Configure MATLAB
+## 0.1 Matlab configuration
 
 Open matlab by typing in the terminal
 
@@ -37,40 +11,11 @@ matlab
 ```
 Under Environment -> Preferences -> MATLAB -> Keyboard Shortcuts
 
-switch Active  settings from Emacs Default Set to Windows Default Set
+Switch Active  settings from Emacs Default Set to Windows Default Set
 
-## 0.3 Troubleshoting
+# 1.0 Configure git
+## 1.1 Checking for existing SSH keys
 
-If you see:
-
-```
-License checkout failed.
-License Manager Error -9
-Your username does not match the username in the license file.
-To run on this computer, you must run the Activation client to reactivate your license.
-
-Troubleshoot this issue by visiting:
-https://www.mathworks.com/support/lme/R2020a/9
-
-Diagnostic Information:
-Feature: MATLAB
-License path: /home/mahdi/.matlab/R2020a_licenses:/usr/local/MATLAB/R2020a/licenses/license.dat:/usr/local/MATLAB/
-R2020a/licenses/license_mahdi-HP-EliteBook-8470w_40552010_R2020a.lic
-Licensing error: -9,57.
-```
-
-then run
-
-```
-cd /usr/local/MATLAB/R2020a/bin
-./activate_matlab.sh
-```
-
-# 1. Configure git
-
-
-#### 1.1 Checking for existing SSH keys
-￼
 1) Open Terminal.
 
 2) Enter ls -al ~/.ssh to see if existing SSH keys are present:
@@ -86,7 +31,7 @@ id_ed25519.pub
 ```
 If the files exist go to 1.3
 
-#### 1.2 Generate SSH key is missing
+## 1.2 Generate SSH key is missing
 
 If there are no files in ~/.ssh then do this step to create them
 
@@ -106,15 +51,12 @@ This creates a new ssh key, using the provided email as a label.
 ```
 At the prompt, hit enter to make SSh passwordless
 
-#### 1.3 Copy SSH public key
+## 1.3 Copy SSH public key
 
 1) Copy the SSH key to your clipboard.
 
 If your SSH key file has a different name than the example code, modify the filename to match your current setup. When copying your key, don't add any newlines or whitespace.
 ```
-sudo apt-get install xclip
-# Downloads and installs xclip. If you don't have `apt-get`, you might need to use another installer (like `yum`)
-
 xclip -sel clip < ~/.ssh/id_rsa.pub
 # Copies the contents of the id_rsa.pub file to your clipboard
 ```
@@ -143,12 +85,13 @@ xclip -sel clip < ~/.ssh/id_rsa.pub
 
 <img src="https://docs.github.com/assets/images/help/settings/ssh-add-key.png">
 
-# 1.4 Configure git
+## 1.4 Configure git
 ```bash
 git config --global user.name "John Doe"
 git config --global user.email johndoe@wpi.edu
 ```
-# 2. Set up your Git Repository
+
+# 2.0 Set up your Git Repository
 ## 2.1 Clone your private lab repository
 Clone your private lab repository. **Note: The command below won't work! Use your own url, found on Github!**
 ```bash
@@ -210,7 +153,7 @@ matlab
 
 # 4. Run Lab1.m
 
-Plug your robot into the wall and connect to your computer with USB.
+Plug your robot into the wall and connect to your computer with USB. Then, calibrate the arm.
 (Protip: make sure putty is closed to avoid latency issues)
 
 In the Matlab GUI navigate to the "lab1.m" file and then click then run button.
